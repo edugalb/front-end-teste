@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
-              .otherwise('/app/simulador');
+              .otherwise('/app/welcome');
           $stateProvider
               .state('app', {
                   abstract: true,
