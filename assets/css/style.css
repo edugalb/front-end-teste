@@ -53,6 +53,11 @@ md-whiteframe{
 .form-app md-input-container{
   margin: 5px 0 18px 0;
 }
+.img-circle {
+    border-radius: 50%;
+    max-width: 60px;
+}
+
 
 /* -- Material Design Table style -------------- */
 .table {
