@@ -1,7 +1,7 @@
 
 ## Fale um pouco sobre você :)
 
-### 0) Porque devemos contratar você e não o concorrente?
+### 0) Por que devemos contratar você e não o concorrente?
 * Experiência em trabalho em equipe
 * Habilidade de gerenciar o próprio tempo
 * Experiêncie em vários softwares e jogos, principalmente jogos. Gosto sempre de comparar os 2, pois os jogos são até mais complexos que os sistemas e não possuem manuais. Você já leu um manual para poder jogar um jogo?
