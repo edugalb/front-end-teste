@@ -1,46 +1,46 @@
 <form layout="column" name="userForm" class="form-app md-padding">
-  <h2>Preencha os dados abaixo para realizar um cálculo</h2>
+    <h2>Preencha os dados abaixo para realizar um cálculo</h2>
 
-  <div layout="column">
-    <label>Qual o regime em que sua empresa se enquadra?</label>
-    <br>
-    <md-radio-group ng-model="form.regime" layout="row">
-    <md-radio-button value="lucro" class="md-primary">Lucro Presumido</md-radio-button>
-    <md-radio-button value="simples">Simples Nacional</md-radio-button>
-    </md-radio-group>
-    <br>
-    <br>
-          
-  </div> 
-  <div layout="column" ng-if="form.regime == 'simples'">
-    <label>Informe a soma do valor faturamento da empresa nos últimos 12 meses, excluindo-se o faturamento de mês da simulação?</label>
-    <md-input-container flex>
-      <input  format="number" next-on-enter="faturamento" id="fatanterior" name="fatanterior" ng-model="form.fatanterior" type="text">
-    </md-input-container>
-  </div>
-         
-  <div layout="column" >
-    <label>Qual o valor do faturamento da empresa no mês referente à simulação?</label>
-    <md-input-container>
-      <input format="number" next-on-enter="folha" id="faturamento" name="faturamento" ui-mask="99 - 99999-999?9" ui-mask-placeholder-char="_" class="remove-placeholder" ng-model="form.faturamento" type="text" ng-blur="update('tel')">
-    </md-input-container>
-  </div>
+    <div layout="column">
+        <label>Qual o regime em que sua empresa se enquadra?</label>
+        <br>
+        <md-radio-group ng-model="form.regime" layout="row">
+            <md-radio-button value="lucro" class="md-primary">Lucro Presumido</md-radio-button>
+            <md-radio-button value="simples">Simples Nacional</md-radio-button>
+        </md-radio-group>
+        <br>
+        <br>
 
-  <div layout="column">
-    <label>Informe a soma do valor da folha de pagamento da empresa no mês referente à simulação?</label>
-    <md-input-container>
-      <input format="number" next-on-enter="celular1" id="folha" name="folha" ui-mask="99 - 99999-999?9" ui-mask-placeholder-char="_" class="remove-placeholder" name="tel1" id="tel" ng-model="form.folha" type="text" ng-blur="update('tel')">
-    </md-input-container>
-  </div>
+    </div>
+    <div layout="column" ng-if="form.regime == 'simples'">
+        <label>Informe a soma do valor faturamento da empresa nos últimos 12 meses, excluindo-se o faturamento de mês da simulação?</label>
+        <md-input-container flex>
+            <input format="number" next-on-enter="faturamento" id="fatanterior" name="fatanterior" ng-model="form.fatanterior" type="text">
+        </md-input-container>
+    </div>
 
-  <div layout="column" ng-if="form.regime == 'simples'">
-    <label>Procure pela atividade econômica da empresa</label>
+    <div layout="column">
+        <label>Qual o valor do faturamento da empresa no mês referente à simulação?</label>
+        <md-input-container>
+            <input format="number" next-on-enter="folha" id="faturamento" name="faturamento" ng-model="form.faturamento" type="text" ng-blur="update('tel')">
+        </md-input-container>
+    </div>
+
+    <div layout="column">
+        <label>Informe a soma do valor da folha de pagamento da empresa no mês referente à simulação?</label>
+        <md-input-container>
+            <input format="number" next-on-enter="{{nextOnEnter}}" id="folha" name="folha" ng-model="form.folha" type="text" ng-blur="update('tel')">
+        </md-input-container>
+    </div>
+
+    <div layout="column" ng-if="form.regime == 'simples'">
+        <label>Procure pela atividade econômica da empresa</label>
+        <br>
+        <select-atividades atividade="form.atividade"></select-atividades>
+    </div>
     <br>
-    <select-atividades atividade="form.atividade"></select-atividades>
-  </div>
-  <br>
 
-  <div  layout="column" layout-align="end end" flex>
-    <md-button  ng-disabled="!formIsValid()" ng-click="calcula();" class="md-raised md-accent">Calcular</md-button>
-  </div>
+    <div layout="column" layout-align="end end" flex>
+        <md-button id="btnCalcular" ng-disabled="!formIsValid()" ng-click="calcula();" class="md-raised md-accent">Calcular</md-button>
+    </div>
 </form>

@@ -26,6 +26,11 @@ logados em uma aplicação, e que o simulador na realidade seria um módulo da a
 * Máscaras de Valores (jquery.priceformat)
 * REST com Restangular
 
+### Usabilidade
+
+* Ao entrar no sistema, o usuário deve utilizar o mouse para selecionar o radio.
+* Uma vez selecionado, toda operação pode ser conduzida pelo teclado, utilizando o enter.
+
 ### Estrutura
 
 * /javascripts/services: Serviçoes em comum para todos controllers

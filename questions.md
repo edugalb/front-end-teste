@@ -11,8 +11,7 @@ Aprender, Contribuir e crescer profissionalmente
 Ser apaixonado pelo que faço e nunca me acomodar com o conhecimento que já adquiri
  
 ### 4) Cite 2 dos principais desafios e projetos da sua carreira. Descreva a importância da sua participação, como você fez a diferença, os resultados que alcançou com a equipe/empresa.
-1. Criação do multicálculo+bpms para cotação online de seguros para corretora do Santander
-2. Gerenciar atividades de TI para entrega de projetos constantes, através de técnicas de desenvolvimento ágil e Continous Delivery
+https://youtu.be/jpWZhjt-sUo
 
 ### 5) Adicione aqui links para seu perfil profissional (Linkedin, por exemplo):
 https://github.com/eduardogalbiati

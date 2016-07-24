@@ -43,8 +43,9 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
             "atividade": false
         };
     }
-
-
+    /**
+    * Form Validator
+    */
     function formIsValid() {
         var form = vm.scope.form;
         if (form.regime == 'lucro') {
@@ -59,6 +60,7 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
         return false;
     }
 
+    // Calcula Factory
     function calcula() {
         vm.scope.loadingdialog = appUtils.showCalculandoDialog();
         var regime = vm.scope.form.regime;
@@ -84,24 +86,30 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
         }
     }
 
+    function geraSomatoria(data) {
+        vm.scope.resultado.total = {
+            'valor': 0,
+            'aliquota': 0,
+        }
+
+        for (var x in data.objects) {
+            vm.scope.resultado.total.valor += parseFloat(data.objects[x].valor);
+            vm.scope.resultado.total.valor = parseFloat(vm.scope.resultado.total.valor.toFixed(2));
+            vm.scope.resultado.total.aliquota += parseFloat(data.objects[x].aliquota.toFixed(2));
+            vm.scope.resultado.total.aliquota = parseFloat(vm.scope.resultado.total.aliquota.toFixed(2));
+        }
+    }
+
     function calculaLucro(query) {
 
         var account = Restangular.one("imposto/lucropresumido");
         account.get(query).then(function(data) {
-            if(data.success != true)
-                return  appUtils.showErrorDialog("", data.errors)
+            if (data.success != true)
+                return appUtils.showErrorDialog("", data.errors)
             vm.scope.resultado = data;
-            vm.scope.resultado.total = {
-                'valor': 0,
-                'aliquota': 0,
-            }
 
-            for (var x in data.objects) {
-                vm.scope.resultado.total.valor += parseFloat(data.objects[x].valor);
-                vm.scope.resultado.total.valor = parseFloat(vm.scope.resultado.total.valor.toFixed(2));
-                vm.scope.resultado.total.aliquota += parseFloat(data.objects[x].aliquota.toFixed(2));
-                vm.scope.resultado.total.aliquota = parseFloat(vm.scope.resultado.total.aliquota.toFixed(2));
-            }
+            geraSomatoria(data);
+
             vm.scope.loadingdialog.hide();
 
         }, function(response) {
@@ -112,22 +120,17 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
     function calculaSimples(query) {
         var account = Restangular.one("imposto/simples");
         account.get(query).then(function(data) {
-            if(data.success != true)
-                return  appUtils.showErrorDialog("", data.errors)
+            if (data.success != true)
+                return appUtils.showErrorDialog("", data.errors)
             vm.scope.resultado = data;
-            vm.scope.resultado.total = {
-                'valor': 0,
-                'aliquota': 0,
-            }
 
-            for (var x in data.objects) {
-                vm.scope.resultado.total.valor += parseFloat(data.objects[x].valor.toFixed(2));
-                vm.scope.resultado.total.aliquota += parseFloat(data.objects[x].aliquota.toFixed(2));
-            }
+
+            geraSomatoria(data);
+
             vm.scope.loadingdialog.hide();
 
         }, function(response) {
-             appUtils.showErrorDialog("Error with status code", response.status)
+            appUtils.showErrorDialog("Error with status code", response.status)
         });
     }
 
@@ -136,13 +139,13 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
             return vm.scope.form.regime
         },
         function(newValue) {
-            // if(newValue != '' && newValue != undefined){
             if (newValue == 'lucro') {
                 appUtils.setFocusTime('faturamento')
+                vm.scope.nextOnEnter = 'btnCalcular';
             } else if (newValue == 'simples') {
                 appUtils.setFocusTime('fatanterior')
+                vm.scope.nextOnEnter = 'atividades';
             }
-            //}
         }
     );
 

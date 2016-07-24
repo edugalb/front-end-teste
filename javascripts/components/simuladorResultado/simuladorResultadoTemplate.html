@@ -1,25 +1,25 @@
-   <div class="md-padding app-result" ng-hide="!resultado.objects" layout="column" >
+<div class="md-padding app-result" ng-hide="!resultado.objects" layout="column">
     <h2>Resultado</h2>
 
-    <table class="table table-mc-light-blue"  flex>
-      <thead>
-        <tr>
-          <th><span>Descrição</span></th>
-          <th style="text-align: right;"><span>Aliquota</span></th>
-          <th style="text-align: right;">Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="row in resultado.objects">
-          <td >{{row.descricao}}</td>
-          <td style="text-align: right;">{{row.aliquota}}%</td>
-          <td style="text-align: right;">R$ {{row.valor|currencyBRL}}</td>
-        </tr>
-        <tr>
-          <td ><b>Total</b></td>
-          <td style="text-align: right;"><b>{{resultado.total.aliquota}}%</b></td>
-          <td style="text-align: right;"class="md-title"><b>R$ {{resultado.total.valor|currencyBRL}}</b></td>
-        </tr>
-      </tbody>
+    <table class="table table-mc-light-blue" flex>
+        <thead>
+            <tr>
+                <th><span>Descrição</span></th>
+                <th style="text-align: right;"><span>Aliquota</span></th>
+                <th style="text-align: right;">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in resultado.objects">
+                <td>{{row.descricao}}</td>
+                <td style="text-align: right;">{{row.aliquota}}%</td>
+                <td style="text-align: right;">R$ {{row.valor|currencyBRL}}</td>
+            </tr>
+            <tr>
+                <td><b>Total</b></td>
+                <td style="text-align: right;"><b>{{resultado.total.aliquota}}%</b></td>
+                <td style="text-align: right;" class="md-title"><b>R$ {{resultado.total.valor|currencyBRL}}</b></td>
+            </tr>
+        </tbody>
     </table>
-  </div>
+</div>

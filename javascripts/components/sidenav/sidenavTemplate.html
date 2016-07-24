@@ -1,27 +1,27 @@
-<div layout="column" >
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex>
-    <md-toolbar class="md-tall md-hue-2">
-      <span flex></span>
-      <div layout="column" class="md-toolbar-tools-bottom inset">
-        <user-avatar></user-avatar>
-        <br>
-        <span></span>
-        <div>{{user.name}}</div>
-        <div>{{user.email}}</div>
-      </div>
-    </md-toolbar>
-    <md-list>
-      <md-list-item ng-repeat="item in menu" >
-        <a ui-sref="app.{{item.route}}">
-          <md-item-content  md-ink-ripple layout="row" layout-align="start center">
-            <div class="inset">
-              <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+<div layout="column">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex>
+        <md-toolbar class="md-tall md-hue-2">
+            <span flex></span>
+            <div layout="column" class="md-toolbar-tools-bottom inset">
+                <user-avatar></user-avatar>
+                <br>
+                <span></span>
+                <div>{{user.name}}</div>
+                <div>{{user.email}}</div>
             </div>
-            <div class="inset">{{item.title}}
-            </div>
-          </md-item-content>
-        </a>
-      </md-list-item>
-    </md-list>
-  </md-sidenav>
+        </md-toolbar>
+        <md-list>
+            <md-list-item ng-repeat="item in menu">
+                <a ui-sref="app.{{item.route}}">
+                    <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                        <div class="inset">
+                            <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+                        </div>
+                        <div class="inset">{{item.title}}
+                        </div>
+                    </md-item-content>
+                </a>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
 </div>

@@ -1,17 +1,17 @@
 angular.module('app')
-  .directive('sideNavApp', sidenavDirective);
+    .directive('sideNavApp', sidenavDirective);
 
 function sidenavDirective() {
     return {
-        controller : sidenavController,
-        controllerAs : '_ctrl',
+        controller: sidenavController,
+        controllerAs: '_ctrl',
         restrict: 'AE',
         replace: 'true',
         scope: {
-            appContainer : '=?appContainer'
+            appContainer: '=?appContainer'
         },
         templateUrl: 'javascripts/components/sidenav/sidenavTemplate.html',
-        link: function(scope, elem, attrs) { 
+        link: function(scope, elem, attrs) {
             scope.construct()
         },
 
@@ -19,44 +19,40 @@ function sidenavDirective() {
 }
 
 angular.module('app')
-  .controller('appContainer','$scope', sidenavController);
+    .controller('appContainer', '$scope', sidenavController);
 
 function sidenavController(appContainer, $scope) {
 
-  var vm = this;
-  vm.scope = $scope;
-  vm.scope.user = {};
+    var vm = this;
+    vm.scope = $scope;
+    vm.scope.user = {};
 
-  vm.scope.construct = construct;
+    vm.scope.construct = construct;
 
-  function construct(){
+    function construct() {
 
-   
-	vm.scope.menu = [
-      {
-        "icon": "chat",
-        "title": "Welcome",
-        "route": "welcome"
-      },
-      {
-        "icon": "gavel",
-        "title": "Simulador",
-        "route": "simulador"
-      }
-      
-    ];
 
-    loadUser();
-  }
+        vm.scope.menu = [{
+                "icon": "chat",
+                "title": "Welcome",
+                "route": "welcome"
+            }, {
+                "icon": "gavel",
+                "title": "Simulador",
+                "route": "simulador"
+            }
 
-  function loadUser(){
-     vm.scope.user = {
-        'name': 'Eduardo Galbiati',
-        'email': 'eduardo.galbiati7@gmail.com'
-     };
-  }
+        ];
+
+        loadUser();
+    }
+
+    function loadUser() {
+        vm.scope.user = {
+            'name': 'Eduardo Galbiati',
+            'email': 'eduardo.galbiati7@gmail.com'
+        };
+    }
 
 
 }
-
-

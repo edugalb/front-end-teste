@@ -1,6 +1,6 @@
 {
-  "name": "FarmaGed",
-  "version": "0.0.0",
+  "name": "Front-end-teste",
+  "version": "2.0.0",
   "devDependencies": {
     "gulp": "^3.9.0",
     "fs-jetpack": "^0.7.0",

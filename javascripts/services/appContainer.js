@@ -1,36 +1,33 @@
-  
-    angular.module('app')
-        .service('appContainer', ['$q', appContainerService]);
-    
-    function appContainerService($q) {
-        return {
-            define: define,
-            setAction:setAction,
-            setElement:setElement,
-            getElement:getElement,
-            getAction:getAction
-        };
+  angular.module('app')
+      .service('appContainer', ['$q', appContainerService]);
 
-        function define(scope, options){
-            scope.appContainer = options;
-        }
+  function appContainerService($q) {
+      return {
+          define: define,
+          setAction: setAction,
+          setElement: setElement,
+          getElement: getElement,
+          getAction: getAction
+      };
 
-        function setAction(scope, module, action)
-        {
-            scope.appContainer.actions[module][action] = ! scope.appContainer.actions[module][action]
-        }
+      function define(scope, options) {
+          scope.appContainer = options;
+      }
 
-        function setElement(scope, element, value)
-        {
-            scope.appContainer[element] = value;
-        }
+      function setAction(scope, module, action) {
+          scope.appContainer.actions[module][action] = !scope.appContainer.actions[module][action]
+      }
 
-        function getElement(scope, element){
-            return scope.appContainer[element];
-        }
+      function setElement(scope, element, value) {
+          scope.appContainer[element] = value;
+      }
 
-        function getAction(scope, module, action){
-            return scope.appContainer.actions[module][action];
-        }
+      function getElement(scope, element) {
+          return scope.appContainer[element];
+      }
 
-    }
+      function getAction(scope, module, action) {
+          return scope.appContainer.actions[module][action];
+      }
+
+  }
