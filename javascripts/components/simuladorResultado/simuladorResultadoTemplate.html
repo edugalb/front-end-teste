@@ -1,0 +1,27 @@
+   <div>
+    <h2>Resultado</h2>
+
+    <md-table-container  >
+    <table>
+      <thead>
+        <tr>
+          <th><span>Descrição</span></th>
+          <th><span>Aliquota</span></th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr md-row ng-repeat="row in resultado.objects">
+          <td md-cell>{{row.descricao}}</td>
+          <td md-cell>{{row.aliquota}}%</td>
+          <td md-cell>R$ {{row.valor|currencyBRL}}</td>
+        </tr>
+        <tr md-row>
+          <td md-cell><b>Total</b></td>
+          <td md-cell><b>{{resultado.total.aliquota}}%</b></td>
+          <td md-cell class="md-title"><b>R$ {{resultado.total.valor|currencyBRL}}</b></td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  </div>

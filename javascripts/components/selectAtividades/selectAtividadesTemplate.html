@@ -12,7 +12,9 @@
             md-input-id="acForSearch"
             placeholder="Pesquisar..."
             md-delay="500"
-            class="autocomplete-for-search input-uppercase" flex>
+                        md-floating-label=""
+
+             flex>
       <md-item-template>
         <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
       </md-item-template>

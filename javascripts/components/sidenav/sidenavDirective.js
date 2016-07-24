@@ -35,13 +35,13 @@ function sidenavController(appContainer, $scope) {
 	vm.scope.menu = [
       {
         "icon": "md-icon",
-        "title": "Dashboard",
-        "route": "dashboard"
+        "title": "Simulador",
+        "route": "simulador"
       },
       {
         "icon": "md-icon",
-        "title": "Lancamentos",
-        "route": "lancamentos"
+        "title": "Welcome",
+        "route": "welcome"
       }
     ];
 

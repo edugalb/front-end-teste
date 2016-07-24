@@ -12,5 +12,4 @@ angular.module('app', [
         'ngRoute',
     	'ui.router',
     	'restangular',
-    	'md.data.table',
 ])

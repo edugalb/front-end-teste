@@ -17,7 +17,7 @@ angular.module('app')
       function ($stateProvider,   $urlRouterProvider) {
           
           $urlRouterProvider
-              .otherwise('/app/dashboard');
+              .otherwise('/app/simulador');
           $stateProvider
               .state('app', {
                   abstract: true,
@@ -34,16 +34,19 @@ angular.module('app')
                   }
 
               })
-              .state('app.dashboard', {
-                  url: '/dashboard',
-                  templateUrl: 'javascripts/dashboard/dashboard.html',
-                  controller: 'DashboardController',
+              .state('app.simulador', {
+                  url: '/simulador',
+                  templateUrl: 'javascripts/simulador/simulador.html',
+                  controller: 'SimuladorController',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
                         return $ocLazyLoad.load([
-                          'javascripts/dashboard/dashboardController.js',
-                          'javascripts/components/toolbar/toolbarDirective.js'
+                          'javascripts/simulador/simuladorController.js',
+                          'javascripts/components/toolbar/toolbarDirective.js',
+                          'javascripts/components/formSimulador/formSimuladorDirective.js',
+                          'javascripts/components/simuladorResultado/simuladorResultadoDirective.js',
+                          'javascripts/components/selectAtividades/selectAtividadesDirective.js'
                           ]);
                     }]
                   }
@@ -51,7 +54,7 @@ angular.module('app')
               .state('app.welcome', {
                   url: '/welcome',
                   templateUrl: 'javascripts/welcome/welcome.html',
-                  controller: 'DashboardController',
+                  controller: 'WelcomeController',
                   resolve: {
                     deps: ['$ocLazyLoad',
                       function( $ocLazyLoad ){
@@ -62,35 +65,6 @@ angular.module('app')
                     }]
                   }
               })
-              .state('app.lancamentos', {
-                  url: '/lancamentos',
-                  templateUrl: 'javascripts/lancamentos/lancamentos.html',
-                  controller: 'LancamentosController',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load([
-                          'javascripts/lancamentos/lancamentosController.js',
-                          'javascripts/components/toolbar/toolbarDirective.js',
-                          'javascripts/components/selectAtividades/selectAtividadesDirective.js'
-                          ]);
-                    }]
-                  }
-              })
-             /* .state('app.impostolucro', {
-                  url: '/impostoslucro',
-                  templateUrl: 'javascripts/impostoslucro/dashboard.html',
-                  controller: 'DashboardController',
-                  resolve: {
-                    deps: ['$ocLazyLoad',
-                      function( $ocLazyLoad ){
-                        return $ocLazyLoad.load([
-                          'javascripts/welcome/dashboardController.js',
-                          'javascripts/components/toolbar/toolbarDirective.js'
-                          ]);
-                    }]
-                  }
-              })*/
               
       }
     ]

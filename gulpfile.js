@@ -1,13 +1,11 @@
 'use strict';
 
 var childProcess = require('child_process');
-var electron = require('electron-prebuilt');
 var gulp = require('gulp');
 var jetpack = require('fs-jetpack');
 var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
 var os = require('os');
-var release_windows = require('./build.windows');
 var bower = './bower_components';
 
 
@@ -36,7 +34,7 @@ gulp.task('copyNode', ['clean'], function () {
         ]
     });
 });
-gulp.task('copy', ['copyNode'], function () {
+gulp.task('copy', function () {
     return projectDir.copyAsync('app', destDir.path(), {
         overwrite: true,
         matching: [
