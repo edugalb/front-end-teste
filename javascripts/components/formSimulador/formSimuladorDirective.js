@@ -47,7 +47,6 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
 
     function formIsValid() {
         var form = vm.scope.form;
-        console.log(form)
         if (form.regime == 'lucro') {
             if (form.faturamento != 'R$ 00,00' && form.folha != 'R$ 00,00')
                 return true;
@@ -89,6 +88,8 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
 
         var account = Restangular.one("imposto/lucropresumido");
         account.get(query).then(function(data) {
+            if(data.success != true)
+                return  appUtils.showErrorDialog("", data.errors)
             vm.scope.resultado = data;
             vm.scope.resultado.total = {
                 'valor': 0,
@@ -96,8 +97,10 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
             }
 
             for (var x in data.objects) {
-                vm.scope.resultado.total.valor += data.objects[x].valor;
-                vm.scope.resultado.total.aliquota += data.objects[x].aliquota;
+                vm.scope.resultado.total.valor += parseFloat(data.objects[x].valor);
+                vm.scope.resultado.total.valor = parseFloat(vm.scope.resultado.total.valor.toFixed(2));
+                vm.scope.resultado.total.aliquota += parseFloat(data.objects[x].aliquota.toFixed(2));
+                vm.scope.resultado.total.aliquota = parseFloat(vm.scope.resultado.total.aliquota.toFixed(2));
             }
             vm.scope.loadingdialog.hide();
 
@@ -109,6 +112,8 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
     function calculaSimples(query) {
         var account = Restangular.one("imposto/simples");
         account.get(query).then(function(data) {
+            if(data.success != true)
+                return  appUtils.showErrorDialog("", data.errors)
             vm.scope.resultado = data;
             vm.scope.resultado.total = {
                 'valor': 0,
@@ -116,13 +121,13 @@ function formSimuladorController($scope, Restangular, $q, appUtils) {
             }
 
             for (var x in data.objects) {
-                vm.scope.resultado.total.valor += data.objects[x].valor;
-                vm.scope.resultado.total.aliquota += data.objects[x].aliquota;
+                vm.scope.resultado.total.valor += parseFloat(data.objects[x].valor.toFixed(2));
+                vm.scope.resultado.total.aliquota += parseFloat(data.objects[x].aliquota.toFixed(2));
             }
             vm.scope.loadingdialog.hide();
 
         }, function(response) {
-            console.log("Error with status code", response.status);
+             appUtils.showErrorDialog("Error with status code", response.status)
         });
     }
 

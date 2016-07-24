@@ -1,9 +1,10 @@
 <div layout="column" >
-  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" flex>
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" flex>
     <md-toolbar class="md-tall md-hue-2">
       <span flex></span>
       <div layout="column" class="md-toolbar-tools-bottom inset">
         <user-avatar></user-avatar>
+        <br>
         <span></span>
         <div>{{user.name}}</div>
         <div>{{user.email}}</div>

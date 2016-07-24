@@ -10,7 +10,7 @@ var bower = './bower_components';
 
 
 var projectDir = jetpack;
-var srcDir = projectDir.cwd('./app');
+var srcDir = projectDir.cwd('./javascripts');
 var destDir = projectDir.cwd('./build');
 
 // -------------------------------------
@@ -21,25 +21,14 @@ gulp.task('clean', function (callback) {
     return destDir.dirAsync('.', { empty: true });
 });
 
-gulp.task('copyNode', ['clean'], function () {
-    return projectDir.copyAsync('./', destDir.path(), {
-        overwrite: true,
-        matching: [
-            './node_modules/node-uuid/**/*',
-            './node_modules/mysql/**/*',
-            './node_modules/q/**/*',
-            './node_modules/serial-number/**/*',
-            './node_modules/fs-jetpack/**/*',
-          
-        ]
-    });
-});
+
 gulp.task('copy', function () {
-    return projectDir.copyAsync('app', destDir.path(), {
+    return projectDir.copyAsync('javascripts', destDir.path()+'/javascripts', {
         overwrite: true,
         matching: [
             '*.html',
             '*.css',
+            '*.js',
             'main.js',
             'package.json'
         ]
@@ -48,39 +37,14 @@ gulp.task('copy', function () {
 
 
 gulp.task('build', ['copy'], function () {
-    return gulp.src('./app/index.html')
+    return gulp.src('./index.html')
         .pipe(usemin({
 			jsAttributes : {
 				onload : "window.$ = window.jQuery = module.exports;",
 			  },
             js2: [uglify()],
-            js1: [],
+            js1: [uglify()],
 			
         }))
-        .pipe(gulp.dest('build/'));
-});
-
-
-gulp.task('run', function () {
-    childProcess.spawn(electron, ['./app'], { stdio: 'inherit' });
-});
-
-gulp.task('build-electron', function () {
-    switch (os.platform()) {
-        case 'darwin':
-            // execute build.osx.js 
-            break;
-        case 'linux':
-            //execute build.linux.js
-            break;
-        case 'win32':
-        console.log('sdf')
-            return release_windows.build();
-    }
-});
-
-gulp.task('dump-asar', function () {
-   
-            return release_windows.build();
-    
+        .pipe(gulp.dest('./build/'));
 });

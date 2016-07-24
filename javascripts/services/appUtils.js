@@ -72,13 +72,21 @@
             return nova;
         }
 
-        function showErrorDialog  (err) {
+        function showErrorDialog  (msg, errors) {
+
             var dialog = $mdDialog;
+            console.log(errors);
+            var str = '<ul>';
+            for(var x in errors){
+              str += '<li>'+errors[x]+'</li>'
+            }
+            str += '</ul>';
 
             var customTemplate =  '<md-dialog style="max-width:30%;" flex>' +
                                   '  <md-dialog-content class="md-padding open-file-dialog">' +
                                   '   Erro ao processar a requisição<br> ' +
-                                  ' <h4>'+err+'</h4>' +
+                                  ' <h4>'+msg+'</h4>' +
+                                   str +
                                   '    </md-dialog-content>' +
                                   '  <md-dialog-actions>' +
                                   '    <md-button ng-click="closeDialog();" class="md-primary">' +
@@ -127,7 +135,7 @@
 
         function valueFormat(value){
             value = value.replace("R$ ","" );
-            value = value.replace(".","" );
+            value = value.replace(/\./g,"" );
             value = value.replace(",","." );
             return value;
         }

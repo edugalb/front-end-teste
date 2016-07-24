@@ -34,15 +34,16 @@ function sidenavController(appContainer, $scope) {
    
 	vm.scope.menu = [
       {
-        "icon": "md-icon",
-        "title": "Simulador",
-        "route": "simulador"
-      },
-      {
-        "icon": "md-icon",
+        "icon": "chat",
         "title": "Welcome",
         "route": "welcome"
+      },
+      {
+        "icon": "gavel",
+        "title": "Simulador",
+        "route": "simulador"
       }
+      
     ];
 
     loadUser();

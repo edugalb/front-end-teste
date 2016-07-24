@@ -21,10 +21,10 @@ function selectAtividadesDirective() {
 
 
 angular.module('app')
-	.controller('selectAtividadesController', '$scope', 'Restangular', '$q', selectAtividadesController );
+	.controller('selectAtividadesController', '$scope', 'Restangular', 'appUtils', '$q', selectAtividadesController );
 
 
-	function selectAtividadesController($scope, Restangular, $q) {
+	function selectAtividadesController($scope, Restangular, appUtils, $q) {
 		var vm = this;
 		vm.scope = $scope;
 		vm.scope.construct = construct;
@@ -41,33 +41,8 @@ angular.module('app')
 			loadElements();
 		}
 		function loadElements() {
-			/*ClientesActiveRecord.getClientesForSearchWithoutCpf().then(function (data, err) {
-
-	                  //Aplicar a tratativa de erros, estudar como manipular as promisses
-                if(vm.scope.somenteNome == true){
-                	 vm.scope.elements = data.map( function (state) {
-	                    return {
-	                        value: state.nomeCliente.toLowerCase()+' '+state.cpf,
-	                        display: state.nomeCliente,
-	                        idCliente: state.idCliente
-	                    };
-	                });
-                }else{
-	                 vm.scope.elements = data.map( function (state) {
-	                    return {
-	                        value: state.nomeCliente.toLowerCase()+' '+state.cpf,
-	                        display: state.nomeCliente+' - '+state.cpf,
-	                        idCliente: state.idCliente
-	                    };
-	                });
-	            }
-	                 
-	        }).catch(function (err){
-	              vm.scope.showErrorDialog(err);
-	        });*/
+		
 	         Restangular.all("atividades").getList().then(function(data) {
-			    console.log(data);
-			    //vm.scope.atividades = data.objects;
 			    vm.scope.elements = data.objects.map( function (state) {
 			    	console.log(state);
 	                    return {
@@ -77,7 +52,7 @@ angular.module('app')
 	                    };
 	                });
 			  }, function(response) {
-			    console.log("Error with status code", response.status);
+            	appUtils.showErrorDialog("Error with status code", response.status)
 			  });
 		}
 
@@ -97,22 +72,6 @@ angular.module('app')
         function selectedItemChange(item) {
         	console.log('Item changed to ' + JSON.stringify(item));
         	vm.scope.atividade = item;
-        	/*if(vm.scope.somenteNome != true){
-				if(item !== undefined){
-					selectCliente(item.idCliente);
-					appUtils.setValue('acForSearch', '');
-					appUtils.setFocus('hiddenToSkip');
-					//vm.scope.ctrl.searchText = '';
-				}
-			}else{
-				if(item !== undefined){
-					selectCliente(item.idCliente);
-					appUtils.setFocus('telefone1');
-					//vm.scope.ctrl.searchText = '';
-				}
-				appUtils.setFocus('telefone1');
-			}*/
-
         }
  
         /**
