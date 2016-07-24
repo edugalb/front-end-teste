@@ -6,7 +6,6 @@
 * Habilidade de gerenciar o próprio tempo
 * Experiêncie em vários softwares e jogos, principalmente jogos. Gosto sempre de comparar os 2, pois os jogos são até mais complexos que os sistemas e não possuem manuais. Você já leu um manual para poder jogar um jogo?
 * Eu adoraria fazer uma documentação que nem esse cara https://github.com/YuLeven/front-end-teste/ mas infelizmente não tenho tempo
-* Aliás, foi muito bem feita, percebe-se que ele manja de front, mas peca em alguns detalhes...
 * Vou passar bem rápido pelas questões abaixo, pois já fiz teste na geekhunter, vídeo, entrevista com Otávio, entrevista com Fábio, e agora mais um teste, me perdoem e não me level a mal, qualquer coisa deem uma olhada no meu vídeo:
 https://youtu.be/jpWZhjt-sUo
 
